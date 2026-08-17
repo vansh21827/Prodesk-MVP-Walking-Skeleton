@@ -4,7 +4,6 @@
 > **Theme:** Next.js Authentication Architecture & Route Guards
 
 TaskMatrix is a modern project-management workspace built with Next.js. The application provides an authenticated workspace where users can manage projects, tasks, and team members from a centralized dashboard.
-
 This sprint focuses on establishing a reliable authentication architecture using **NextAuth.js**, protecting application routes, maintaining authentication state, and providing a structured foundation for the authenticated TaskMatrix workspace.
 
 ---
