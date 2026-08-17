@@ -1,0 +1,834 @@
+.projectsPage {
+  width: 100%;
+  max-width: 100%;
+  padding: 34px 38px 50px;
+  box-sizing: border-box;
+}
+
+/* =========================================================
+   PAGE HEADER
+========================================================= */
+
+.pageHeader {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.eyebrow {
+  margin: 0 0 10px;
+  color: #5548e8;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.pageHeader h1 {
+  margin: 0;
+  color: #0b1220;
+  font-size: 40px;
+  line-height: 1.1;
+  font-weight: 750;
+  letter-spacing: -0.03em;
+}
+
+.pageDescription {
+  margin: 12px 0 0;
+  color: #64748b;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.primaryButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 46px;
+  padding: 0 18px;
+  border: 0;
+  border-radius: 10px;
+  background: #5146e5;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.primaryButton:hover {
+  background: #4438ca;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(81, 70, 229, 0.2);
+}
+
+.primaryButton:active {
+  transform: translateY(0);
+}
+
+.primaryButton:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* =========================================================
+   TOOLBAR
+========================================================= */
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 26px;
+}
+
+.searchBox {
+  width: min(370px, 100%);
+  height: 46px;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 0 14px;
+  border: 1px solid #dbe3ef;
+  border-radius: 10px;
+  background: #ffffff;
+  box-sizing: border-box;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.searchBox svg {
+  flex-shrink: 0;
+  color: #8ca0ba;
+}
+
+.searchBox:focus-within {
+  border-color: #8b82ef;
+  box-shadow: 0 0 0 3px rgba(81, 70, 229, 0.1);
+}
+
+.searchBox input {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #172033;
+  font-size: 14px;
+}
+
+.searchBox input::placeholder {
+  color: #91a1b8;
+}
+
+.filters {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.filterButton {
+  height: 42px;
+  padding: 0 16px;
+  border: 1px solid #dbe3ef;
+  border-radius: 9px;
+  background: #ffffff;
+  color: #64748b;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.filterButton:hover {
+  border-color: #aaa4f3;
+  color: #5146e5;
+}
+
+.filterActive {
+  border-color: #5146e5;
+  background: #5146e5;
+  color: #ffffff;
+}
+
+.filterActive:hover {
+  background: #4438ca;
+  color: #ffffff;
+}
+
+/* =========================================================
+   ERROR
+========================================================= */
+
+.errorMessage {
+  margin-bottom: 22px;
+  padding: 13px 16px;
+  border: 1px solid #fecaca;
+  border-radius: 9px;
+  background: #fef2f2;
+  color: #b91c1c;
+  font-size: 14px;
+}
+
+/* =========================================================
+   STATISTICS
+========================================================= */
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  margin-bottom: 28px;
+}
+
+.statCard {
+  min-height: 104px;
+  padding: 24px;
+  border: 1px solid #dce4ef;
+  border-radius: 15px;
+  background: #ffffff;
+  box-sizing: border-box;
+}
+
+.statCard h2 {
+  margin: 0 0 9px;
+  color: #0b1220;
+  font-size: 29px;
+  line-height: 1;
+  font-weight: 750;
+}
+
+.statCard p {
+  margin: 0;
+  color: #8a9ab0;
+  font-size: 14px;
+}
+
+/* =========================================================
+   PROJECT GRID
+========================================================= */
+
+.projectGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.projectCard {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid #dce4ef;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 7px 25px rgba(15, 23, 42, 0.045);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.projectCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 35px rgba(15, 23, 42, 0.08);
+}
+
+/* =========================================================
+   PROJECT CARD TOP
+========================================================= */
+
+.projectCardTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 24px 24px 0;
+}
+
+.projectIcon {
+  width: 46px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: #eef0ff;
+  color: #5146e5;
+}
+
+.statusBadge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 0 11px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.inProgress {
+  background: #e9fbf3;
+  color: #059669;
+}
+
+.planning {
+  background: #fff7e8;
+  color: #d97706;
+}
+
+.completed {
+  background: #edf4ff;
+  color: #2563eb;
+}
+
+/* =========================================================
+   PROJECT INFO
+========================================================= */
+
+.projectInfo {
+  padding: 25px 24px 0;
+}
+
+.projectInfo h2 {
+  margin: 0;
+  color: #0b1220;
+  font-size: 22px;
+  line-height: 1.3;
+  font-weight: 750;
+}
+
+.projectInfo p {
+  margin: 10px 0 0;
+  color: #718198;
+  font-size: 14px;
+  line-height: 1.55;
+  min-height: 22px;
+}
+
+/* =========================================================
+   PROGRESS
+========================================================= */
+
+.progressSection {
+  padding: 42px 24px 0;
+}
+
+.progressHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 9px;
+  color: #7a8ba3;
+  font-size: 13px;
+}
+
+.progressHeader strong {
+  color: #5146e5;
+  font-size: 13px;
+}
+
+.progressTrack {
+  width: 100%;
+  height: 8px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #edf1f7;
+}
+
+.progressFill {
+  height: 100%;
+  border-radius: inherit;
+  background: #5a50eb;
+  transition: width 0.35s ease;
+}
+
+/* =========================================================
+   PROJECT META
+========================================================= */
+
+.projectMeta {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  padding: 24px;
+}
+
+.metaItem {
+  min-width: 0;
+}
+
+.metaItem > span {
+  display: block;
+  margin-bottom: 8px;
+  color: #8a9ab0;
+  font-size: 12px;
+}
+
+.metaItem > strong {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+  color: #182235;
+  font-size: 13px;
+  font-weight: 650;
+  white-space: nowrap;
+}
+
+.metaItem svg {
+  flex-shrink: 0;
+}
+
+/* =========================================================
+   CARD FOOTER
+========================================================= */
+
+.projectFooter {
+  min-height: 66px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 0 24px;
+  border-top: 1px solid #e8edf4;
+}
+
+.priorityText {
+  color: #8796aa;
+  font-size: 13px;
+}
+
+.priorityText strong {
+  font-weight: 750;
+}
+
+.priorityHigh strong {
+  color: #ef4444;
+}
+
+.priorityMedium strong {
+  color: #d97706;
+}
+
+.priorityLow strong {
+  color: #059669;
+}
+
+.projectActions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.actionButton {
+  width: 38px;
+  height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 9px;
+  background: #eef2ff;
+  color: #5146e5;
+  cursor: pointer;
+  text-decoration: none;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.actionButton:hover {
+  transform: translateY(-1px);
+  background: #e0e7ff;
+}
+
+.deleteButton {
+  background: #fee9e9;
+  color: #ef4444;
+}
+
+.deleteButton:hover {
+  background: #fecaca;
+}
+
+.openButton {
+  background: #eef2f5;
+  color: #334155;
+}
+
+.openButton:hover {
+  background: #e2e8f0;
+}
+
+/* =========================================================
+   EMPTY / LOADING
+========================================================= */
+
+.emptyState,
+.loadingState {
+  min-height: 270px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 35px;
+  border: 1px dashed #d5deeb;
+  border-radius: 16px;
+  background: #ffffff;
+  text-align: center;
+}
+
+.emptyIcon {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+  border-radius: 16px;
+  background: #eef0ff;
+  color: #5146e5;
+}
+
+.emptyState h2 {
+  margin: 0;
+  color: #172033;
+  font-size: 20px;
+}
+
+.emptyState p {
+  margin: 8px 0 20px;
+  color: #8493a8;
+  font-size: 14px;
+}
+
+.loadingState p {
+  margin: 15px 0 0;
+  color: #7b8ba2;
+  font-size: 14px;
+}
+
+.loadingSpinner {
+  width: 28px;
+  height: 28px;
+  border: 3px solid #e3e7ef;
+  border-top-color: #5146e5;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 25px;
+  background: rgba(15, 23, 42, 0.52);
+  backdrop-filter: blur(4px);
+  box-sizing: border-box;
+}
+
+.modal {
+  width: min(680px, 100%);
+  max-height: calc(100vh - 50px);
+  overflow-y: auto;
+  border-radius: 17px;
+  background: #ffffff;
+  box-shadow: 0 25px 70px rgba(15, 23, 42, 0.22);
+}
+
+.modalHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 25px;
+  padding: 27px 28px 22px;
+  border-bottom: 1px solid #e8edf4;
+}
+
+.modalHeader h2 {
+  margin: 0;
+  color: #111827;
+  font-size: 23px;
+  line-height: 1.3;
+}
+
+.modalHeader p:last-child {
+  margin: 7px 0 0;
+  color: #8190a5;
+  font-size: 13px;
+}
+
+.modalClose {
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: 0;
+  border-radius: 9px;
+  background: #f1f4f8;
+  color: #64748b;
+  cursor: pointer;
+}
+
+.modalClose:hover {
+  background: #e7ebf1;
+  color: #111827;
+}
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.formGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  padding: 26px 28px;
+}
+
+.formGroup {
+  min-width: 0;
+}
+
+.formGroup.full {
+  grid-column: 1 / -1;
+}
+
+.formGroup label {
+  display: block;
+  margin-bottom: 8px;
+  color: #334155;
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.formGroup input,
+.formGroup textarea,
+.formGroup select {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #d9e1ec;
+  border-radius: 9px;
+  outline: none;
+  background: #ffffff;
+  color: #172033;
+  font-family: inherit;
+  font-size: 14px;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.formGroup input,
+.formGroup select {
+  height: 44px;
+  padding: 0 12px;
+}
+
+.formGroup textarea {
+  min-height: 100px;
+  padding: 12px;
+  resize: vertical;
+  line-height: 1.5;
+}
+
+.formGroup input::placeholder,
+.formGroup textarea::placeholder {
+  color: #9aa8ba;
+}
+
+.formGroup input:focus,
+.formGroup textarea:focus,
+.formGroup select:focus {
+  border-color: #756cf0;
+  box-shadow: 0 0 0 3px rgba(81, 70, 229, 0.1);
+}
+
+.formActions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 18px 28px 25px;
+  border-top: 1px solid #e8edf4;
+}
+
+.cancelButton {
+  height: 44px;
+  padding: 0 17px;
+  border: 1px solid #d9e1ec;
+  border-radius: 9px;
+  background: #ffffff;
+  color: #475569;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.cancelButton:hover {
+  background: #f8fafc;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1150px) {
+  .statsGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .projectGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .toolbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .searchBox {
+    width: 100%;
+  }
+
+  .filters {
+    width: 100%;
+  }
+}
+
+@media (max-width: 760px) {
+  .projectsPage {
+    padding: 25px 18px 40px;
+  }
+
+  .pageHeader {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .pageHeader h1 {
+    font-size: 32px;
+  }
+
+  .primaryButton {
+    width: 100%;
+  }
+
+  .statsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .projectMeta {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .projectFooter {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 18px 24px;
+  }
+
+  .projectActions {
+    width: 100%;
+  }
+
+  .actionButton {
+    flex: 1;
+  }
+
+  .formGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .formGroup.full {
+    grid-column: auto;
+  }
+
+  .modalOverlay {
+    padding: 12px;
+  }
+
+  .modalHeader {
+    padding: 22px;
+  }
+
+  .formGrid {
+    padding: 22px;
+  }
+
+  .formActions {
+    padding: 16px 22px 22px;
+  }
+
+  .formActions .primaryButton,
+  .cancelButton {
+    width: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .filters {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .filterButton {
+    width: 100%;
+    padding: 0 8px;
+  }
+
+  .projectCardTop {
+    padding: 20px 18px 0;
+  }
+
+  .projectInfo {
+    padding: 20px 18px 0;
+  }
+
+  .progressSection {
+    padding: 30px 18px 0;
+  }
+
+  .projectMeta {
+    padding: 20px 18px;
+  }
+
+  .projectFooter {
+    padding: 16px 18px;
+  }
+}
