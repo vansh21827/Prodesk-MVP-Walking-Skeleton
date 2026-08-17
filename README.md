@@ -673,9 +673,9 @@ The Sprint's primary objective—building a Next.js authentication architecture 
 
 # Author
 
-**TaskMatrix**
+**Vansh Bansal**
 
-Developed as part of the **Sprint 14 — Track A: Frontend Specialists** project.
+Task Matrix is Developed as part of the **Sprint 14 — Track A: Frontend Specialists** project.
 
 ---
 
