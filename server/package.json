@@ -1,9 +1,8 @@
 {
-  "name": "server",
+  "name": "taskmatrix-server",
   "version": "1.0.0",
-  "description": "TaskMatrix backend server",
+  "private": true,
   "type": "module",
-  "main": "src/server.js",
   "scripts": {
     "dev": "nodemon src/server.js",
     "start": "node src/server.js"
