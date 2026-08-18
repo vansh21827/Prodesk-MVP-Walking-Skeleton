@@ -13,13 +13,9 @@ dns.setServers(["8.8.8.8"]);
 
 const app = express();
 
-const allowedOrigin =
-  process.env.CLIENT_URL ||
-  "https://prodesk-mvp-walking-skeleton.vercel.app";
-
 app.use(
   cors({
-    origin: allowedOrigin,
+    origin: process.env.CLIENT_URL,
     credentials: true,
   })
 );
@@ -35,25 +31,25 @@ app.get("/", (req, res) => {
   });
 });
 
-app.get("/api/health", (req, res) => {
-  res.json({
-    status: "ok",
-    message: "TaskMatrix API is healthy",
-  });
-});
-
 const PORT = process.env.PORT || 5000;
 
-/*
- * Local development only.
- * Vercel will use the exported Express app.
- */
-if (process.env.NODE_ENV !== "production") {
-  app.listen(PORT, () => {
-    console.log(
-      `TaskMatrix server running on port ${PORT}`
-    );
-  });
-}
+const startServer = async () => {
+  try {
+    await connectDB();
 
-export default app;
+    app.listen(PORT, () => {
+      console.log(
+        `TaskMatrix server running on port ${PORT}`
+      );
+    });
+  } catch (error) {
+    console.error(
+      "Server startup failed:",
+      error
+    );
+
+    process.exit(1);
+  }
+};
+
+startServer();
