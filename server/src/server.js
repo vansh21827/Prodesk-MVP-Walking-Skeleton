@@ -15,7 +15,7 @@ const app = express();
 
 const allowedOrigin =
   process.env.CLIENT_URL ||
-  "http://localhost:3000";
+  "https://prodesk-mvp-walking-skeleton.vercel.app";
 
 app.use(
   cors({
