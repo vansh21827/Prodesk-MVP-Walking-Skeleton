@@ -12,7 +12,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: process.env.CLIENT_URL || "https://prodesk-capstone-taskmatrix-lac.vercel.app/dashboard",
+    origin: process.env.CLIENT_URL || "https://prodesk-mvp-walking-skeleton.vercel.app/login",
     credentials: true,
   })
 );
