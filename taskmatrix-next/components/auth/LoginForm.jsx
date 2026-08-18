@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
 export default function LoginForm() {
@@ -18,66 +19,25 @@ export default function LoginForm() {
     setLoading(true);
 
     try {
-      const API_URL = process.env.NEXT_PUBLIC_API_URL;
+      const result = await signIn("credentials", {
+        email: email.trim(),
+        password,
+        redirect: false,
+      });
 
-      if (!API_URL) {
-        throw new Error("API URL is not configured.");
-      }
-
-      const response = await fetch(
-        `${API_URL}/api/auth/login`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            email: email.trim(),
-            password,
-          }),
-        }
-      );
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        setError(
-          data?.message || "Invalid email or password."
-        );
+      if (!result || result.error) {
+        setError("Invalid email or password.");
         setLoading(false);
         return;
       }
 
-      if (!data?.token) {
-        setError("Authentication token was not received.");
-        setLoading(false);
-        return;
-      }
-
-      /*
-       * Store authentication information
-       */
-      localStorage.setItem("token", data.token);
-
-      localStorage.setItem(
-        "user",
-        JSON.stringify(data.user)
-      );
-
-      localStorage.setItem("auth", "true");
-
-      /*
-       * Redirect to dashboard
-       */
       router.replace("/dashboard");
       router.refresh();
     } catch (error) {
       console.error("Login error:", error);
 
       setError(
-        error.message === "API URL is not configured."
-          ? "Server configuration is missing."
-          : "Unable to connect to the server."
+        "Unable to connect to the authentication server."
       );
 
       setLoading(false);
@@ -102,7 +62,6 @@ export default function LoginForm() {
           placeholder="Enter your email"
           autoComplete="email"
           required
-          disabled={loading}
         />
       </div>
 
@@ -122,7 +81,6 @@ export default function LoginForm() {
           placeholder="Enter your password"
           autoComplete="current-password"
           required
-          disabled={loading}
         />
       </div>
 
@@ -136,7 +94,9 @@ export default function LoginForm() {
         type="submit"
         disabled={loading}
       >
-        {loading ? "Signing in..." : "Login"}
+        {loading
+          ? "Signing in..."
+          : "Login"}
       </button>
     </form>
   );
